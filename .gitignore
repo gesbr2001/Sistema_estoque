@@ -1,0 +1,31 @@
+# Environment files
+.env
+.env.*
+!.env.example
+
+# CodeIgniter writable directory
+writable/*
+!writable/.htaccess
+!writable/index.html
+
+# Dependencies
+vendor/
+node_modules/
+
+# IDE and OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs and caches
+*.log
+*.cache
+
+# PHPUnit cache
+.phpunit.result.cache
+
+# Composer lock for libraries (optional)
+# composer.lock
