@@ -26,15 +26,9 @@ class Database extends Config
      */
     public array $default = [
         'DSN'          => '',
-<<<<<<< HEAD
-        'hostname'     => 'localhost',
-        'username'     => 'root',
-        'password'     => '',
-=======
         'hostname'     => 'db',
         'username'     => 'root',
         'password'     => 'root',
->>>>>>> 0e73b1d (coloquei o docker e o css)
         'database'     => 'sistema_estoque',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',

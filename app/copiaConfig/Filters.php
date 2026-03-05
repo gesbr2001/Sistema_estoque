@@ -34,10 +34,6 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
-<<<<<<< HEAD
-        'auth' => \App\Filters\AuthFilter::class,
-=======
->>>>>>> 0e73b1d (coloquei o docker e o css)
     ];
 
     /**

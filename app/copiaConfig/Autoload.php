@@ -88,9 +88,5 @@ class Autoload extends AutoloadConfig
      *
      * @var list<string>
      */
-<<<<<<< HEAD
-    public $helpers = [];
-=======
     public $helpers = ['url'];
->>>>>>> 0e73b1d (coloquei o docker e o css)
 }

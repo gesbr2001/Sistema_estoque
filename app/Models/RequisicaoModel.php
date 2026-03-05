@@ -15,9 +15,13 @@ class RequisicaoModel extends Model
             'numero_requisicao',
             'centro_custo',
             'status',
+<<<<<<< HEAD
             'observacao_protocolo',
             'status_protocolo',
             'data_protocolo'
+=======
+            'observacao'
+>>>>>>> 0e73b1d (coloquei o docker e o css)
         ];
 
         protected $useTimeStamp = true;

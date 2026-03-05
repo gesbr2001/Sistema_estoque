@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Environment files
 .env
 .env.*
@@ -29,3 +30,31 @@ Thumbs.db
 
 # Composer lock for libraries (optional)
 # composer.lock
+=======
+# --- CodeIgniter 4 ---
+.env
+/writable/*
+!/writable/.gitkeep
+/vendor/
+/public/index.php
+system
+app/config
+# (Opcional) Se você usa o PHPUnit para testes
+/tests/_support/_generated/
+
+# --- Docker ---
+# Ignora os dados brutos do banco de dados (isso fica salvo no seu PC, não no Git)
+# Se você seguiu meu YAML anterior, a pasta de volume é db_data
+/db_data/
+.docker-compose.persistent
+
+# --- Editores e Sistema Operacional ---
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+*.log
+
+# --- Composer ---
+composer.phar
+>>>>>>> 0e73b1d (coloquei o docker e o css)

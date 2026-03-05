@@ -16,9 +16,12 @@
         <li><a href="/conferencia">Conferência</a></li>
         <li><a href="/expedicao">Expedição</a></li>
     </ul>
+<<<<<<< HEAD
     <form action="/logout" method="get">
     <button type="submit">Sair</button>
 </form>
+=======
+>>>>>>> 0e73b1d (coloquei o docker e o css)
 </div>
 
 <!-- CONTEÚDO -->

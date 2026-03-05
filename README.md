@@ -1,61 +1,69 @@
-# CodeIgniter 4 Framework
+# 📦 Sistema de Estoque & Requisições (GESBR)
 
-## What is CodeIgniter?
+Este projeto é um sistema de gerenciamento de estoque desenvolvido com **CodeIgniter 4**, rodando em um ambiente profissional isolado com **Docker**. Esta arquitetura resolve conflitos comuns de portas (como o erro de PID 4 do Windows) e garante que o sistema funcione da mesma forma em qualquer computador, seja na empresa ou em casa.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+---
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## 🚀 Tecnologias e Ambiente
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+* **PHP 8.2 (Apache)**: Configurado especificamente para as necessidades do CI4.
+* **MySQL 8.0**: Banco de dados relacional para persistência de dados.
+* **phpMyAdmin**: Interface web para gerenciamento visual do banco de dados.
+* **Docker & Docker Compose**: Orquestração completa do ambiente.
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+---
 
-## Important Change with index.php
+## 🛠️ Como Rodar o Projeto
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+Siga estes passos sempre que baixar o projeto em uma nova máquina para garantir que tudo suba corretamente:
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+### 1. Clonar e Acessar
+```bash
+git clone [https://github.com/gesbr2001/Sistema_estoque.git](https://github.com/gesbr2001/Sistema_estoque.git)
+cd Sistema_estoque
+```
+###2. Configurar o arquivo .env
+O arquivo .env contém as credenciais de conexão. Certifique-se de que ele está configurado para o ambiente Docker:
+```bash
+database.default.hostname = db
+database.default.database = sistema_estoque
+database.default.username = root
+database.default.password = root
+database.default.DBDriver = MySQLi
+database.default.port = 3306
+```
 
-**Please** read the user guide for a better explanation of how CI4 works!
+###3. Subir os Containers
+```bash
+docker compose up -d --build
+```
 
-## Repository Management
+###4. Finalizar Configuração (Apenas na primeira vez)
+Execute os comandos abaixo para preparar as dependências e o banco de dados:
+```Bash
+# Instalar dependências do Composer
+docker exec -it ci4_app composer install
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+# Rodar as Migrations (Criar as tabelas automaticamente)
+docker exec -it ci4_app php spark migrate
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+# Dar permissão de escrita para logs e cache
+docker exec -it ci4_app chmod -R 777 writable
+```
 
-## Contributing
+####🔗 Acessos Locais
+Serviço	        Endereço	                Credenciais
+Sistema (Web)	  http://localhost:8080	    (Tela de Login)
+phpMyAdmin	    http://localhost:8081	    Servidor: db / User: root / Pass: root
 
-We welcome contributions from the community.
 
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
-
-## Server Requirements
-
-PHP version 8.2 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+#####📝 Comandos Úteis do Docker
+No dia a dia, você usará estes comandos no terminal da pasta do projeto:
+Parar o sistema:
+```docker compose stop```
+Reiniciar tudo:
+```docker compose restart```
+Ver logs em tempo real: 
+```docker logs -f ci4_app```
+Limpar volumes e resetar banco:
+```docker compose down -v```
