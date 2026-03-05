@@ -33,12 +33,12 @@ database.default.DBDriver = MySQLi
 database.default.port = 3306
 ```
 
-###3. Subir os Containers
+### 3. Subir os Containers
 ```bash
 docker compose up -d --build
 ```
 
-###4. Finalizar Configuração (Apenas na primeira vez)
+### 4. Finalizar Configuração (Apenas na primeira vez)
 Execute os comandos abaixo para preparar as dependências e o banco de dados:
 ```Bash
 # Instalar dependências do Composer
@@ -51,13 +51,13 @@ docker exec -it ci4_app php spark migrate
 docker exec -it ci4_app chmod -R 777 writable
 ```
 
-####🔗 Acessos Locais
+#### 🔗 Acessos Locais
 Serviço	        Endereço	                Credenciais
 Sistema (Web)	  http://localhost:8080	    (Tela de Login)
 phpMyAdmin	    http://localhost:8081	    Servidor: db / User: root / Pass: root
 
 
-#####📝 Comandos Úteis do Docker
+##### 📝 Comandos Úteis do Docker
 No dia a dia, você usará estes comandos no terminal da pasta do projeto:
 Parar o sistema:
 ```docker compose stop```
